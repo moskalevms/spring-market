@@ -21,9 +21,9 @@
     </properties>
 
     <modules>
+        <module>market-database</module>
         <module>market-ui</module>
         <module>market-admin-ui</module>
-        <module>market-database</module>
     </modules>
 
 </project>
