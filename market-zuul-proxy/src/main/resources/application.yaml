@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: market-zuul-proxy
+
+zuul:
+  ignoredServices: "*"
+  routes:
+    market-ui:
+      path: /**
+      sensitiveHeaders:
+      serviceId: MARKET-UI-SERVICE
+    market-admin:
+      path: /admin/**
+      sensitiveHeaders:
+      serviceId: MARKET-ADMIN-UI-SERVICE
+
+#shop-ui-service:
+#  ribbon:
+#    listOfServers: http://localhost:8082,http://localhost:8087
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+    fetchRegistry: true
+
+

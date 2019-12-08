@@ -1,0 +1,37 @@
+POST /DailyInfoWebServ/DailyInfo.asmx HTTP/1.1
+Host: www.cbr.ru
+Content-Type: text/xml; charset=utf-8
+SOAPAction: "http://web.cbr.ru/GetCursOnDate"
+
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+    <soap:Body>
+        <GetCursOnDate xmlns="http://web.cbr.ru/">
+            <On_date>2019-12-02</On_date>
+        </GetCursOnDate>
+    </soap:Body>
+</soap:Envelope>
+
+###
+
+# curl 'http://localhost:8080/admin/authenticateTheUser' -H 'Connection: keep-alive' -H 'Cache-Control: max-age=0' -H 'Origin: http://localhost:8080' -H 'Upgrade-Insecure-Requests: 1' -H 'Content-Type: application/x-www-form-urlencoded' -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36' -H 'Sec-Fetch-User: ?1' -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3' -H 'Sec-Fetch-Site: same-origin' -H 'Sec-Fetch-Mode: navigate' -H 'Referer: http://localhost:8080/admin/login' -H 'Accept-Encoding: gzip, deflate, br' -H 'Accept-Language: ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7,he;q=0.6,de;q=0.5,cs;q=0.4' -H 'Cookie: Idea-9b48f7af=17892575-c317-4702-89b0-a017a29f817f; _ga=GA1.1.394553993.1563472197; Idea-9b48f7b0=17892575-c317-4702-89b0-a017a29f817f; SESSION=OTZlY2QwYzMtODk5Yi00MDE2LWE4MzQtNjkzMzY3YjgwZGMx; JSESSIONID=2C5C440A8E6C2CE82C0FA76ACAF676CE' --data '_csrf=f8898209-58a2-4cb9-9c8c-f60d9b8f7806&username=admin&password=admin' --compressed
+POST http://localhost:8080/admin/authenticateTheUser
+Connection: keep-alive
+Cache-Control: max-age=0
+Origin: http://localhost:8080
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36
+Sec-Fetch-User: ?1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: navigate
+Referer: http://localhost:8080/admin/login
+Accept-Encoding: gzip, deflate, br
+Accept-Language: ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7,he;q=0.6,de;q=0.5,cs;q=0.4
+Cookie: Idea-9b48f7af=17892575-c317-4702-89b0-a017a29f817f; _ga=GA1.1.394553993.1563472197; Idea-9b48f7b0=17892575-c317-4702-89b0-a017a29f817f; SESSION=OTZlY2QwYzMtODk5Yi00MDE2LWE4MzQtNjkzMzY3YjgwZGMx; JSESSIONID=2C5C440A8E6C2CE82C0FA76ACAF676CE
+Content-Type: application/x-www-form-urlencoded
+
+_csrf=f8898209-58a2-4cb9-9c8c-f60d9b8f7806&username=admin&password=admin
+
+###
+
