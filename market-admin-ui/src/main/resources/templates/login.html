@@ -18,19 +18,19 @@
             <h1 class="text-center mb-4">BootAdmin</h1>
             <div class="card">
                 <div class="card-body">
-                    <form>
+                    <form th:action="@{/authenticateTheUser}" method="post">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fa fa-user"></i></span>
                             </div>
-                            <input type="text" class="form-control" placeholder="Username">
+                            <input type="text" class="form-control" name="username" placeholder="Username">
                         </div>
 
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fa fa-key"></i></span>
                             </div>
-                            <input type="password" class="form-control" placeholder="Password">
+                            <input type="password" class="form-control" name="password" placeholder="Password">
                         </div>
 
                         <div class="form-check mb-3">
@@ -58,7 +58,6 @@
 <script th:src="@{js/jquery.min.js}"></script>
 <script th:src="@{js/bootstrap.bundle.min.js}"></script>
 <script th:src="@{js/bootadmin.min.js}"></script>
-
 
 </body>
 </html>

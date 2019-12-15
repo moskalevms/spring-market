@@ -18,12 +18,14 @@
 
     <properties>
         <java.version>1.8</java.version>
+        <spring-cloud.version>Hoxton.RELEASE</spring-cloud.version>
+        <maven.deploy.skip>true</maven.deploy.skip>
     </properties>
 
     <modules>
+        <module>market-database</module>
         <module>market-ui</module>
         <module>market-admin-ui</module>
-        <module>market-database</module>
     </modules>
 
 </project>
