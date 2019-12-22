@@ -24,6 +24,7 @@
         <module>market-database</module>
         <module>market-ui</module>
         <module>market-admin-ui</module>
+        <module>market-ui-tests</module>
     </modules>
 
 </project>
