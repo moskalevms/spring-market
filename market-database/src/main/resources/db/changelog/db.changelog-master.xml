@@ -19,10 +19,15 @@
         <tagDatabase tag="v.1.0"/>
     </changeSet>
 
+    <changeSet author="moskalevms" id="1">
+        <tagDatabase tag="db_categories_change"/>
+    </changeSet>
+
     <include file="v-0.2/db.changelog-v.2.0.xml" relativeToChangelogFile="true"/>
 
     <changeSet author="moskalevms" id="6">
         <tagDatabase tag="v.2.0"/>
     </changeSet>
+
 
 </databaseChangeLog>

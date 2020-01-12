@@ -38,6 +38,7 @@ public class Brand implements Serializable {
     }
 
     public List<Product> getProducts() {
+        System.out.println();
         return products;
     }
 

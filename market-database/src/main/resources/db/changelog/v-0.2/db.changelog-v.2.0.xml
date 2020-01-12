@@ -97,4 +97,17 @@
     <changeSet author="moskalevms (generated)" id="1574372675400-18">
         <addForeignKeyConstraint baseColumnNames="category_id" baseTableName="products" constraintName="FKog2rp4qthbtt2lfyhfo32lsw9" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="categories" validate="true"/>
     </changeSet>
+
+
+    <changeSet author="moskalevms" id="1574115797537-8">
+        <sqlFile dbms="mysql"
+                 encoding="utf8"
+                 endDelimiter="\nGO"
+                 path="insert-categories-data.sql"
+                 relativeToChangelogFile="true"
+                 splitStatements="true"
+                 stripComments="true"/>
+        <rollback/>
+    </changeSet>
+
 </databaseChangeLog>
