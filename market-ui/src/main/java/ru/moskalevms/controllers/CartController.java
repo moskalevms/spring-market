@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import ru.moskalevms.service.CartService;
+import ru.moskalevms.service.ProductService;
 import ru.moskalevms.service.model.LineItem;
 
 @Controller
@@ -13,9 +14,12 @@ public class CartController {
 
     private final CartService cartService;
 
+    private final ProductService productService;
+
     @Autowired
-    public CartController(CartService cartService) {
+    public CartController(CartService cartService, ProductService productService) {
         this.cartService = cartService;
+        this.productService = productService;
     }
 
     @RequestMapping("/cart")
@@ -27,6 +31,8 @@ public class CartController {
 
     @RequestMapping(value = "/cart", method = RequestMethod.POST)
     public String updateCart(LineItem lineItem) {
+        lineItem.setProductRepr(productService.findById(lineItem.getProductId())
+                .orElseThrow(IllegalArgumentException::new));
         cartService.updateCart(lineItem);
         return "redirect:/cart";
     }

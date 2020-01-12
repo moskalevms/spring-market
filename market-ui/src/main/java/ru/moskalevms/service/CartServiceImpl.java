@@ -1,5 +1,10 @@
 package ru.moskalevms.service;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
@@ -7,24 +12,36 @@ import org.springframework.stereotype.Service;
 import ru.moskalevms.controllers.repr.ProductRepr;
 import ru.moskalevms.service.model.LineItem;
 
+import javax.annotation.PostConstruct;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 @Scope(scopeName = "session", proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class CartServiceImpl implements CartService {
 
-    private final ProductService productService;
+    private static final long serialVersionUID = -9025621122549454991L;
+
+    private static final Logger logger = LoggerFactory.getLogger(CartServiceImpl.class);
 
     private Map<LineItem, Integer> lineItems;
 
-    @Autowired
-    public CartServiceImpl(ProductService productService) {
-        this.productService = productService;
+    @PostConstruct
+    public void post() {
+        logger.info("Session bean post construct");
+    }
+
+    public CartServiceImpl() {
         this.lineItems = new HashMap<>();
+    }
+
+    @JsonCreator
+    public CartServiceImpl(@JsonProperty("lineItems") List<LineItem> lineItems) {
+        this.lineItems = lineItems.stream().collect(Collectors.toMap(li -> li, LineItem::getQty));
     }
 
     @Override
@@ -55,6 +72,7 @@ public class CartServiceImpl implements CartService {
         return new ArrayList<>(lineItems.keySet());
     }
 
+    @JsonIgnore
     @Override
     public BigDecimal getSubTotal() {
         lineItems.forEach(LineItem::setQty);
@@ -65,11 +83,6 @@ public class CartServiceImpl implements CartService {
 
     @Override
     public void updateCart(LineItem lineItem) {
-        if (lineItem.getProductRepr() == null) {
-            lineItem.setProductRepr(productService.findById(lineItem.getProductId())
-                    .orElseThrow(IllegalArgumentException::new));
-        }
-
         lineItems.put(lineItem, lineItem.getQty());
     }
 }
